@@ -12,7 +12,7 @@ import {fonts} from '../utils/fonts';
 import {AppRoutes} from '../utils/appRoutes';
 import {strings} from '../utils/strings';
 
-const HomeScreen = ({navigation}) => {
+const OnboardingScreen = ({navigation}) => {
   return (
     <ScrollView
       centerContent={true}
@@ -26,56 +26,36 @@ const HomeScreen = ({navigation}) => {
           gap: 2,
           alignItems: 'center',
         }}>
+        <Image source={require('../assets/logo.png')} style={styles.logo} />
         <Image
           source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
+          style={styles.illustration}
         />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
-        <Image
-          source={require('../assets/on-boarding-illistration.png')}
-          style={styles.illistration}
-        />
+        <Text style={styles.titleText}>{strings.homeTitle}</Text>
+        <Text style={styles.descriptionText}>{strings.homeDescription}</Text>
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => {
+              navigation.navigate(AppRoutes.Login);
+            }}>
+            <Text style={styles.loginButtonText}>{strings.login}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.signUpButton}
+            onPress={() => {
+              navigation.navigate(AppRoutes.SignUp);
+              console.log(navigation);
+            }}>
+            <Text style={styles.signUpButtonText}>{strings.signUp}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
 };
 
-export default HomeScreen;
+export default OnboardingScreen;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.backgroundColor,
@@ -86,7 +66,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     height: 50,
   },
-  illistration: {
+  illustration: {
     width: 231,
     maxHeight: 231,
     resizeMode: 'center',

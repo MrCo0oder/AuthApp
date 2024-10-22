@@ -1,12 +1,16 @@
 import {useReducer} from 'react';
-
+export const ValidationType = Object.freeze({
+  Email: 'Email',
+  Phone: 'Phone',
+  Password: 'Password',
+});
 function reducer(state, action) {
   if (state === null || action === null) {
     throw new Error('state and action cannot be null in useValidation reducer');
   }
 
   switch (action.type) {
-    case 'Email':
+    case ValidationType.Email:
       return {
         ...state,
         email: action.payload.trim(),
@@ -15,7 +19,7 @@ function reducer(state, action) {
           action.payload !== undefined &&
           validateEmail(action.payload),
       };
-    case 'Phone':
+    case ValidationType.Phone:
       return {
         ...state,
         phone: action.payload.trim(),
@@ -24,7 +28,7 @@ function reducer(state, action) {
           action.payload !== undefined &&
           isValidPhone(action.payload),
       };
-    case 'Password':
+    case ValidationType.Password:
       return {
         ...state,
         password: action.payload.trim(),
@@ -38,25 +42,17 @@ function reducer(state, action) {
       return state;
   }
 }
-const initialState = {
-    email: '',
-    phone: '',
-    password: '',
-    isValidEmail: false,
-    isValidPhone: false,
-    isValidPassword: false,
-  };
-function useValidation() {
+function useValidation(initialState) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   if (state === null || dispatch === null) {
     throw new Error('useValidation hook state and dispatch cannot be null');
   }
-  const handleSubmition = action => {
+  const handleSubmission = action => {
     dispatch({type: action.type, payload: action.payload});
   };
 
-  return {state, handleSubmition};
+  return {state: state, handleSubmission: handleSubmission};
 }
 function validateEmail(email) {
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
