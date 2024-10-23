@@ -3,12 +3,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import OnboardingScreen from '../screens/OnboardingScreen';
 import LoginScreen from '../screens/LoginScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-import {AppRoutes} from '../utils/appRoutes';
-import {colors} from '../utils/colors';
+
 
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import HomeScreen from '../screens/HomeScreen';
+import SignUpScreen from '../screens/SignupScreen';
+import AppRoutes from '../utils/approutes';
+import colors from '../utils/colors';
 
 const Stack = createNativeStackNavigator();
 

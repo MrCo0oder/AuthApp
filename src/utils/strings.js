@@ -7,6 +7,8 @@ export const strings = Object.freeze({
   signUpTitle: "Let's get\nstarted",
   loginTitle: 'Hey,\nWelcome\nBack',
   continue: 'or continue with',
+  forgotPassword: 'Forgot your password?',
+  alreadyHaveAccount:"Already have an account!"
 });
 
 export default strings;

@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import {colors} from '../utils/colors';
 import {fonts} from '../utils/fonts';
-import {AppRoutes} from '../utils/appRoutes';
+import {AppRoutes} from '../utils/approutes';
 import {strings} from '../utils/strings';
 
 const OnboardingScreen = ({navigation}) => {

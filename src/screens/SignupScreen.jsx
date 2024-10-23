@@ -7,13 +7,16 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {colors} from '../utils/colors';
-import {strings} from '../utils/strings';
+import { colors } from '../utils/colors';
+import { strings } from '../utils/strings';
 import Gap from '../components/Gap';
-import {fonts} from '../utils/fonts';
+import { fonts } from '../utils/fonts';
 import CustomInput from '../components/CustomInput';
-import useValidation, {ValidationType} from '../hooks/useValidation';
-import {AppRoutes} from '../utils/appRoutes';
+import useValidation, { ValidationType } from '../hooks/useValidation';
+import { AppRoutes } from '../utils/approutes';
+import AppButton from '../components/AppButton';
+import TextButton from '../components/TextButton';
+import OutlinedButton from '../components/OutlinedButton';
 const initialEmailState = {
   email: '',
   isValidEmail: false,
@@ -26,17 +29,17 @@ const initialPasswordState = {
   password: '',
   isValidPassword: false,
 };
-const SignUpScreen = ({navigation}) => {
-  const {state: emailState, handleSubmission: handleEmailSubmission} =
+const SignUpScreen = ({ navigation }) => {
+  const { state: emailState, handleSubmission: handleEmailSubmission } =
     useValidation(initialEmailState);
-  const {state: phoneState, handleSubmission: handlePhoneSubmission} =
+  const { state: phoneState, handleSubmission: handlePhoneSubmission } =
     useValidation(initialPhoneState);
-  const {state: passwordState, handleSubmission: handlePasswordSubmission} =
+  const { state: passwordState, handleSubmission: handlePasswordSubmission } =
     useValidation(initialPasswordState);
   return (
     <View style={styles.container}>
-      <ScrollView style={{width: '100%'}} showsVerticalScrollIndicator={false}>
-        <View style={{width: '100%'}}>
+      <ScrollView style={{ width: '100%' }} showsVerticalScrollIndicator={false}>
+        <View style={{ width: '100%' }}>
           <View
             style={{
               width: '100%',
@@ -51,12 +54,12 @@ const SignUpScreen = ({navigation}) => {
               }}>
               <Image
                 source={require('../assets/back-button.png')}
-                style={{height: 25, width: 25, tintColor: colors.black}}
+                style={{ height: 25, width: 25, tintColor: colors.black }}
                 resizeMode="contain"
               />
             </TouchableOpacity>
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Gap height={29} width={0} />
             <Text style={styles.titleText}>{strings.signUpTitle}</Text>
             <Gap height={35} width={0} />
@@ -105,23 +108,11 @@ const SignUpScreen = ({navigation}) => {
                 });
               }}
             />
-            <Gap height={32} width={0} />
-            <TouchableOpacity
-              style={{
-                backgroundColor: colors.primary,
-                maxWidth: 343,
-                width: '100%',
-                height: 65,
-                borderRadius: 50,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
+            <Gap height={32} />
+            <AppButton
+              text={strings.signUp}
               onPress={() => {
-                if (
-                  emailState.isValidEmail &&
-                  phoneState.isValidPhone &&
-                  passwordState.isValidPassword
-                ) {
+                if (emailState.isValidEmail && phoneState.isValidPhone && passwordState.isValidPassword) {
                   navigation.navigate(AppRoutes.Home);
                   console.log(emailState);
                   console.log(phoneState);
@@ -129,16 +120,7 @@ const SignUpScreen = ({navigation}) => {
                 } else {
                   alert('Please enter valid details');
                 }
-              }}>
-              <Text
-                style={{
-                  color: colors.white,
-                  fontFamily: fonts.bold,
-                  fontSize: 16,
-                }}>
-                {strings.signUp}
-              </Text>
-            </TouchableOpacity>
+              }} />
             <Text
               style={{
                 color: colors.black,
@@ -149,42 +131,7 @@ const SignUpScreen = ({navigation}) => {
               }}>
               {strings.continue}
             </Text>
-            <TouchableOpacity
-              style={{
-                borderColor: colors.primary,
-                maxWidth: 343,
-                borderWidth: 2,
-                width: '100%',
-                height: 65,
-                borderRadius: 50,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-              onPress={() => {
-                alert('Please enter valid details');
-              }}>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Image
-                  source={require('../assets/google.png')}
-                  style={{width: 20, height: 20, marginRight: 8}}
-                  resizeMode="contain"
-                />
-                <Text
-                  style={{
-                    color: colors.primary,
-                    fontFamily: fonts.semiBold,
-                    fontSize: 15,
-                  }}>
-                  {strings.signUp}
-                </Text>
-              </View>
-            </TouchableOpacity>
+            <OutlinedButton icon={require('../assets/google.png')} text={strings.signUp} onPress={() => { }} />
             <Gap height={24} width={0} />
             <View
               style={{
@@ -199,22 +146,14 @@ const SignUpScreen = ({navigation}) => {
                   fontFamily: fonts.light,
                   fontSize: 13,
                 }}>
-                Already have an account!
+                {strings.alreadyHaveAccount}
               </Text>
               <Gap width={7} />
-              <TouchableOpacity
+              <TextButton
+                text={strings.login}
                 onPress={() => {
-                  navigation.replace(AppRoutes.Login);
-                }}>
-                <Text
-                  style={{
-                    color: colors.primary,
-                    fontFamily: fonts.bold,
-                    fontSize: 13,
-                  }}>
-                  {strings.login}
-                </Text>
-              </TouchableOpacity>
+                  navigation.navigate(AppRoutes.Login);
+                }} />
             </View>
           </View>
         </View>

@@ -9,8 +9,6 @@ import {
 import React from 'react';
 import {colors} from '../utils/colors';
 import {fonts} from '../utils/fonts';
-import {AppRoutes} from '../utils/appRoutes';
-import {strings} from '../utils/strings';
 
 const HomeScreen = ({navigation}) => {
   return (
