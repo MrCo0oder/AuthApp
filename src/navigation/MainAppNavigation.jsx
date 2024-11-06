@@ -10,6 +10,7 @@ import HomeScreen from '../screens/HomeScreen';
 import SignUpScreen from '../screens/SignupScreen';
 import AppRoutes from '../utils/approutes';
 import colors from '../utils/colors';
+import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,7 @@ const MainAppNavigation = () => (
   <SafeAreaProvider>
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName={AppRoutes.Onboarding}
+        initialRouteName={AppRoutes.Splash}
         screenOptions={{
           headerShown: false,
           gestureEnabled: true,
@@ -34,6 +35,7 @@ const MainAppNavigation = () => (
         <Stack.Screen name={AppRoutes.Login} component={LoginScreen} />
         <Stack.Screen name={AppRoutes.SignUp} component={SignUpScreen} />
         <Stack.Screen name={AppRoutes.Home} component={HomeScreen} />
+        <Stack.Screen name={AppRoutes.Splash} component={SplashScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   </SafeAreaProvider>
