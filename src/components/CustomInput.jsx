@@ -13,7 +13,7 @@ const CustomInput = ({
   isPassword = false,
   hint,
   image,
-  isValid,
+  isValid=true,
   onChangeText,
   ...props
 }) => {
